@@ -19,7 +19,7 @@ struct ContentView: View {
                 .scaledToFit()
                 .foregroundStyle(Color.orange)
             //Text() creates a Text interface known as a View. You can pass a String of characters between these parentheses
-            Text("You Are Awesome!")
+            Text("I am a Developer!")
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundStyle(Color.red)
