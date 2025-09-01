@@ -15,18 +15,36 @@ struct ContentView: View {
         // HStack allows for all views inside of it to be stacked HORIZONTALLY
         
         VStack {
+            
+            Spacer()
             Image(systemName: "swift")
                 .resizable()
                 .scaledToFit()
                 .foregroundStyle(Color.orange)
+                .frame(width: 200, height: 200)
+            
+            
             //Text() creates a Text interface known as a View. You can pass a String of characters between these parentheses
             Text(message)
                 .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundStyle(Color.red)
-            Button("Click Me!") {
-                message = "Awesome!"
+                .fontWeight(.ultraLight)
+            
+            
+            Spacer()
+            
+            HStack{
+                Button("Awesome!") {
+                    message = "Awesome!"
+                }
+                
+                
+                Button("Great!") {
+                    message = "Great!"
+                }
             }
+            .buttonStyle(.borderedProminent)
+            .font(.title2)
+            .tint(.orange)
         }
         .padding()
         
