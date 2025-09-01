@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var  message = "I Am a Developer!"
     var body: some View {
         
         // VStack allows for all views inside of it to be stacked VERTICALLY
@@ -19,10 +20,13 @@ struct ContentView: View {
                 .scaledToFit()
                 .foregroundStyle(Color.orange)
             //Text() creates a Text interface known as a View. You can pass a String of characters between these parentheses
-            Text("I Am a Developer!")
+            Text(message)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundStyle(Color.red)
+            Button("Click Me!") {
+                message = "Awesome!"
+            }
         }
         .padding()
         
