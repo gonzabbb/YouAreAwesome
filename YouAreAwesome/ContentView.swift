@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var  message = ""
     @State private var image = ""
-    @State private var imageNumber = 0
-    @State private var messageNumber = 0
+    @State private var lastMessageNumber = 0
+    @State private var lastImageNumber = -1
     var body: some View {
         
         
@@ -21,17 +21,12 @@ struct ContentView: View {
             Text(message)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
-                .foregroundStyle({
-                    switch imageNumber % 2 {
-                    case 1 : return Color.blue
-                    default: return Color.red
-                    }
-                }())
+                .foregroundStyle(.red)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.5)
                 .frame(height: 100)
                 .animation(.easeInOut(duration: 0.15), value: message)
-
+            
             
             Spacer()
             
@@ -57,22 +52,31 @@ struct ContentView: View {
                 let message8 = "Nationals – Won one title and then disappeared faster than their star players."
                 let message9 = "Guardians – Known for great pitching, but their bats usually fall asleep in October."
                 
-                let messageList = [message0,
-                                   message1,
-                                   message2,
-                                   message3,
-                                   message4,
-                                   message5,
-                                   message6,
-                                   message7,
-                                   message8,
-                                   message9]
-                let randomizedMessage = Int.random(in: 0...messageList.count-1)
-                let randomizedImage = Int.random(in: 0...9)
+                let messages = [message0,
+                                message1,
+                                message2,
+                                message3,
+                                message4,
+                                message5,
+                                message6,
+                                message7,
+                                message8,
+                                message9]
                 
-                message = messageList[randomizedMessage]
+                var messageNumber: Int
+                repeat {
+                    messageNumber = Int.random(in: 0...messages.count-1)
+                } while messageNumber == lastMessageNumber
+                message = messages[messageNumber]
+                lastMessageNumber = messageNumber
                 
-                image = "image\(randomizedImage)"
+                
+                var imageNumber: Int
+                repeat {
+                    imageNumber = Int.random(in: 0...9)
+                } while imageNumber == lastImageNumber
+                image = "image\(imageNumber)"
+                lastImageNumber = imageNumber
                 
             }
             
