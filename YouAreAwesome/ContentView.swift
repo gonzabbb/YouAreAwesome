@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var  message = ""
     @State private var image = ""
     @State private var imageNumber = 0
+    @State private var messageNumber = 0
     var body: some View {
         
         
@@ -39,12 +40,34 @@ struct ContentView: View {
             
             
             Button("Show Message") {
-                let message1 = "You are Awesome!"
-                let message2 = "You are Great!"
-
+                let message0 = "Yankees!"
+                let message1 = "Red Sox!"
+                let message2 = "Orioles!"
+                let message3 = "Blue Jays!"
+                let message4 = "Rays!"
+                let message5 = "Mets!"
+                let message6 = "Marlins!"
+                let message7 = "Phillies!"
+                let message8 = "Nationals!"
+                let message9 = "Guardians!"
                 
-                message = message == message1 ? message2 : message1
-//                image = image == image1 ? image2 : image1
+                let messageList = [message0,
+                                   message1,
+                                   message2,
+                                   message3,
+                                   message4,
+                                   message5,
+                                   message6,
+                                   message7,
+                                   message8,
+                                   message9]
+                
+                message = messageList[messageNumber]
+                messageNumber += 1
+                if messageNumber == messageList.count {
+                    messageNumber = 0
+                }
+                
                 image = "image\(imageNumber)"
                 if imageNumber >= 9 {
                     imageNumber = 0
@@ -52,8 +75,6 @@ struct ContentView: View {
                 else {
                     imageNumber += 1
                 }
-                
-                
             }
             
             
