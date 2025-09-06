@@ -67,20 +67,13 @@ struct ContentView: View {
                                    message7,
                                    message8,
                                    message9]
+                let randomizedMessage = Int.random(in: 0...messageList.count-1)
+                let randomizedImage = Int.random(in: 0...9)
                 
-                message = messageList[messageNumber]
-                messageNumber += 1
-                if messageNumber == messageList.count {
-                    messageNumber = 0
-                }
+                message = messageList[randomizedMessage]
                 
-                image = "image\(imageNumber)"
-                if imageNumber >= 9 {
-                    imageNumber = 0
-                }
-                else {
-                    imageNumber += 1
-                }
+                image = "image\(randomizedImage)"
+                
             }
             
             
